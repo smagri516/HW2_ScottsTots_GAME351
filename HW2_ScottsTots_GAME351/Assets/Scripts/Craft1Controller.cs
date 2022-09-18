@@ -27,14 +27,17 @@ public class Craft1Controller : MonoBehaviour
         //the for loop iterates up to three every frame. every iteration it calls the function applyF using i in the parameters.
         for (int i = 0; i < 3; i++)
             ApplyF(anchors[i], hits[i]);
-        //this adds forces based on the vertical and horizontal axis which have input automatically mapped to wasd/arrow keys.
-        //when it multiplies it will add a direction forward/backward or right/left. if no key is pressed it will return 0 which will 0 out the equation and no force will be applied.
+
+//checks to see if that car is currently selected by the camera script. if it is then it is controllable.
         if (GameObject.Find("Main Camera").GetComponent<SmoothCam>().selected == 0)
         {
+        //this adds forces based on the vertical and horizontal axis which have input automatically mapped to wasd/arrow keys.
+        //when it multiplies it will add a direction forward/backward or right/left. if no key is pressed it will return 0 which will 0 out the equation and no force will be applied.
+
             craft.AddForce(Input.GetAxis("Vertical") * moveForce * transform.forward);
             craft.AddTorque(Input.GetAxis("Horizontal") * turnTorque * transform.up);
         }
-        
+
     }
     //The applyF function is what provides the upward force for levitation.
     void ApplyF(Transform anchor, RaycastHit hit)
@@ -48,9 +51,9 @@ public class Craft1Controller : MonoBehaviour
             force = Mathf.Abs(1 / (hit.point.y - anchor.position.y));
             //This force that levitates the craft uses AddForce at position because it wants to add force to the main craft object, but at the location of the anchor objects.
             craft.AddForceAtPosition(transform.up * force * mult, anchor.position, ForceMode.Acceleration);
-            
+
         }
-        
+
     }
 
 }
