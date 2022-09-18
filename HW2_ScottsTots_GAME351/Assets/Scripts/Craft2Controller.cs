@@ -29,11 +29,11 @@ public class Craft2Controller : MonoBehaviour
             ApplyF(anchors[i], hits[i]);
         //this adds forces based on the vertical and horizontal axis which have input automatically mapped to wasd/arrow keys.
         //when it multiplies it will add a direction forward/backward or right/left. if no key is pressed it will return 0 which will 0 out the equation and no force will be applied.
-        
-        
-        craft.AddForce(Input.GetAxis("Vertical") * moveForce * transform.forward);
-        craft.AddTorque(Input.GetAxis("Horizontal") * turnTorque * transform.up);
-        
+        if (GameObject.Find("Main Camera").GetComponent<SmoothCam>().selected == 1)
+        {
+            craft.AddForce(Input.GetAxis("Vertical") * moveForce * transform.forward);
+            craft.AddTorque(Input.GetAxis("Horizontal") * turnTorque * transform.up);
+        }
             
         
 
