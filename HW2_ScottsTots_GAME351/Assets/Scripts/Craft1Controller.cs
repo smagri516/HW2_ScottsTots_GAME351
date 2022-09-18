@@ -47,9 +47,9 @@ public class Craft1Controller : MonoBehaviour
             force = Mathf.Abs(1 / (hit.point.y - anchor.position.y));
             //This force that levitates the craft uses AddForce at position because it wants to add force to the main craft object, but at the location of the anchor objects.
             craft.AddForceAtPosition(transform.up * force * mult, anchor.position, ForceMode.Acceleration);
-
+            
         }
-
+        
     }
 
 }

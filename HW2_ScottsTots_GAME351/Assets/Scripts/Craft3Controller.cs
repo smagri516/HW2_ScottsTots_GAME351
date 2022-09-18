@@ -16,7 +16,7 @@ public class Craft3Controller : MonoBehaviour
         //Assigns the rigidbody of the craft to a variable called craft for later calling.
         craft = GetComponent<Rigidbody>();
     }
-    // creates two 3 value arrays that hold 3 coordinate vectors. The first holds the locations of points on the craft where it hovers from called anchors.
+    // creates two three value arrays that hold 3 coordinate vectors. The first holds the locations of points on the craft where it hovers from called anchors.
     // The other array holds the values of locations where raycasts contact terrain.
     public Transform[] anchors = new Transform[3];
     public RaycastHit[] hits = new RaycastHit[3];
