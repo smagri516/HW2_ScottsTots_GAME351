@@ -11,6 +11,22 @@ public class SmoothCam : MonoBehaviour
     public Vector3 offset;
     public int selected = 0;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log("Change");
+            if (selected < 2)
+            {
+                selected++;
+            }
+            else
+            {
+                selected = 0;
+            }
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -19,17 +35,6 @@ public class SmoothCam : MonoBehaviour
         //It copys the y orientation of the craft. I had to use vector3 to make it work so it copies its own x and z orientation to that it stays level.
         Vector3 newRotation = new Vector3(this.transform.eulerAngles.x, crafts[selected].transform.eulerAngles.y, this.transform.eulerAngles.z);
         this.transform.eulerAngles = newRotation;
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            
-            if(selected < 2)
-            {
-                selected ++;
-            }
-            else
-            {
-                selected = 0;
-            }
-        }
+       
     }
 }
